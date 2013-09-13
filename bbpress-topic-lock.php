@@ -184,7 +184,11 @@ class BBP_Topic_Lock {
 	public function clear_topic_lock( $reply_id = 0, $topic_id = 0, $forum_id = 0, $anonymous_data = false, $author_id = 0, $is_edit = false, $reply_to = 0 ) {
 
 		if( user_can( $author_id, 'moderate' ) ) {
-			delete_post_meta( $topic_id, '_edit_lock' );
+			$lock = $this->check_topic_lock( $topic_id );
+			if( $lock == $author_id ) {
+				// Only delete the lock if the new reply is mod it is locked to
+				delete_post_meta( $topic_id, '_edit_lock' );
+			}
 		}
 	}
 
