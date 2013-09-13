@@ -6,7 +6,7 @@
  * Version: 1.0
  */
 
-class BBP_Other_Moderators_Viewing {
+class BBP_Topic_Lock {
 
 	/**
 	 * Get things going. Load our actions and filters
@@ -189,4 +189,4 @@ class BBP_Other_Moderators_Viewing {
 	}
 
 }
-new BBP_Other_Moderators_Viewing;
+new BBP_Topic_Lock;
