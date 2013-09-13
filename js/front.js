@@ -15,7 +15,8 @@ jQuery(document).ready(function($) {
 
 	});
 
-	$('.bbp-topic-lock-close').click(function() {
+	$('.bbp-topic-lock-close').click(function(e) {
+		e.preventDefault();
 		$('#topic-lock-dialog').remove();
 	})
 });
