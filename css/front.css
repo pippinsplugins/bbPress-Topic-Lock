@@ -1,0 +1,19 @@
+#topic-lock-dialog {
+	width: 350px; text-align: center;
+	background: #fff;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -100px;
+	margin-left: -185px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 5px 5px 5px 5px #333;
+	-moz-box-shadow: 5px 5px 5px 5px #333;
+	box-shadow: 1px 1px 8px 5px #ccc;
+	padding: 15px 10px 10px
+}
+#topic-lock-dialog p {
+	margin: 0 0 15px;
+}
