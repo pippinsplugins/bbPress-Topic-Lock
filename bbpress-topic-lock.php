@@ -17,11 +17,44 @@ class BBP_Other_Moderators_Viewing {
 	 */
 	public function __construct() {
 
+		add_action( 'init', array( $this, 'text_domain' ) );
 		add_action( 'bbp_enqueue_scripts', array( $this, 'scripts' ) );
 		add_action( 'wp_footer', array( $this, 'lock_dialog' ) );
 		add_action( 'bbp_new_reply', array( $this, 'clear_topic_lock' ), 10, 7 );
 		add_filter( 'heartbeat_received', array( $this, 'heartbeat_received' ), 10, 2 );
 
+	}
+
+	/**
+	 * Text domain for localization
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @return void
+	 */
+	public function text_domain() {
+		// Set filter for plugin's languages directory
+		$lang_dir = dirname( plugin_basename( __FILE__ ) ) . '/languages/';
+		$lang_dir = apply_filters( 'bbp_topic_lock_languages', $lang_dir );
+
+		// Traditional WordPress plugin locale filter
+		$locale        = apply_filters( 'plugin_locale',  get_locale(), 'bbp-topic-lock' );
+		$mofile        = sprintf( '%1$s-%2$s.mo', 'bbp-topic-lock', $locale );
+
+		// Setup paths to current locale file
+		$mofile_local  = $lang_dir . $mofile;
+		$mofile_global = WP_LANG_DIR . '/bbp-topic-lock/' . $mofile;
+
+		if ( file_exists( $mofile_global ) ) {
+			// Look in global /wp-content/languages/bbp-topic-lock folder
+			load_textdomain( 'bbp-topic-lock', $mofile_global );
+		} elseif ( file_exists( $mofile_local ) ) {
+			// Look in local /wp-content/plugins/bbp-topic-lock/languages/ folder
+			load_textdomain( 'bbp-topic-lock', $mofile_local );
+		} else {
+			// Load the default language files
+			load_plugin_textdomain( 'bbp-topic-lock', false, $lang_dir );
+		}
 	}
 
 	/**
@@ -91,8 +124,8 @@ class BBP_Other_Moderators_Viewing {
 			$user_data = get_userdata( $mod );
 			echo '<div id="topic-lock-dialog">';
 				do_action( 'bbp_topic_lock_dialog_top', $topic_id );
-				echo '<p>' . $user_data->display_name . ' is currently viewing this topic.</p>';
-				echo '<p><a href="' . bbp_get_forums_url() . '">Get out of here</a> | <a href="#" class="bbp-topic-lock-close">Ignore, close notice</a></p>';
+				echo sprintf( __( '<p>%s is currently viewing this topic.</p>', 'bbpress-topic-lock' ), $user_data->display_name );
+				echo '<p><a href="' . bbp_get_forums_url() . '">' . __( 'Get out of here', 'bbpress-topic-lock' ) . '</a> | <a href="#" class="bbp-topic-lock-close">' . __( 'Ignore, close notice', 'bbpress-topic-lock' ) . '</a></p>';
 				do_action( 'bbp_topic_lock_dialog_bottom', $topic_id );
 			echo '</div>';
 		}
