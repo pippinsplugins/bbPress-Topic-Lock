@@ -1,9 +1,10 @@
 === bbPress - Topic Lock ===
-Author URI: http://pippinsplugins.comtopic-lockadmin-notes
+Plugin URI: http://pippinsplugins.com/bbpress-topic-lock
+Author URI: http://pippinsplugins.com
 Contributors: mordauk
 Donate link: http://pippinsplugins.com/support-the-site
 Tags: bbPress, topic lock, moderators, forum, Forums, mordauk, Pippin Williamson, pippinsplugins
-Requires at least: 3.2
+Requires at least: 3.6
 Tested up to: 3.6
 Stable Tag: 1.0
 
@@ -14,7 +15,7 @@ Warns moderators if another moderator is currently viewing the same bbPress topi
 
 Warns moderators if another moderator is currently viewing the same topic.
 
-Based heavily off of the WordPress post locking system. Uses the WP heartbeat API to set the topic lock status.
+Based heavily off of the WordPress post locking syste and uses the WP heartbeat API (requires WordPress 3.6 or later) to set the topic lock status.
 
 If a topic is locked (because another moderator is already viewing it), a warning dialog will be displayed. Moderators and choose to ignore the lock if they wish.
 
