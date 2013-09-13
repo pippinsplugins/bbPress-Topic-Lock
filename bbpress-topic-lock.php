@@ -92,6 +92,9 @@ class BBP_Topic_Lock {
 		$topic_id = $data['bbp-mods-viewing']['topic_id'];
 		$user_id  = get_current_user_id();
 
+		if( ! current_user_can( 'moderate' ) )
+			return $response; // Only set the lock for moderators
+
 		$mod = $this->check_topic_lock( $topic_id );
 
 		if( ! $mod ) {
