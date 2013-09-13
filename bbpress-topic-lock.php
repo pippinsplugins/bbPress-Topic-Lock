@@ -126,10 +126,10 @@ class BBP_Topic_Lock {
 		if( $mod ) {
 			$user_data = get_userdata( $mod );
 			echo '<div id="topic-lock-dialog">';
-				do_action( 'bbp_topic_lock_dialog_top', $topic_id );
+				do_action( 'bbp_topic_lock_dialog_top', bbp_get_topic_id() );
 				echo sprintf( __( '<p>%s is currently viewing this topic.</p>', 'bbpress-topic-lock' ), $user_data->display_name );
 				echo '<p><a href="' . bbp_get_forums_url() . '">' . __( 'Get out of here', 'bbpress-topic-lock' ) . '</a> | <a href="#" class="bbp-topic-lock-close">' . __( 'Ignore, close notice', 'bbpress-topic-lock' ) . '</a></p>';
-				do_action( 'bbp_topic_lock_dialog_bottom', $topic_id );
+				do_action( 'bbp_topic_lock_dialog_bottom', bbp_get_topic_id() );
 			echo '</div>';
 		}
 	}
