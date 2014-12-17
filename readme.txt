@@ -5,7 +5,7 @@ Contributors: mordauk
 Donate link: http://pippinsplugins.com/support-the-site
 Tags: bbPress, topic lock, moderators, forum, Forums, mordauk, Pippin Williamson, pippinsplugins
 Requires at least: 3.6
-Tested up to: 3.6
+Tested up to: 4.1
 Stable Tag: 1.0
 
 
